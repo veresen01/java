@@ -85,33 +85,33 @@ class Solution {
 /* 
 class Solution {
     public String reverseWords(String s) {
-        List<String> result = new ArrayList<String>();
-        if(s.length()==0)
-            return s;
-        
-        int st = 0;
-        while(st<s.length() && s.charAt(st)==' ')
-            st++;
-        
-        int i = st;
-        while(i<s.length())
-        {
-            while(i<s.length() && s.charAt(i)!=' ')
-                i++;
-            String tmp = s.substring(st,i);
-            result.add(0,tmp);
-            st = i;
-            while(st<s.length() && s.charAt(st)==' ')
-                st++;
-            i = st+1;
+        StringBuilder sb = new StringBuilder();
+        int l = 0;
+        while (l < s.length()) {
+            char ch = s.charAt(l);
+            if (ch == ' ') {
+                l++;
+                continue;
+            }
+            StringBuilder tmp = new StringBuilder();
+            int r = l + 1;
+            tmp.append(ch);
+            while (r < s.length() && s.charAt(r) != ' ') {
+                tmp.append(s.charAt(r));
+                r++;
+            }
+            tmp.append(" ");
+            sb.insert(0, tmp.toString());
+            l = r + 1;
         }
-        return String.join(" ",result);
+        return sb.toString().trim();
     }
 }
 */
 
 //125. Valid Palindrome
-/*public class Solution {
+/*
+public class Solution {
     public boolean isPalindrome(String s) {
         int l = 0, h = s.length() - 1;
         while (l < h) {
